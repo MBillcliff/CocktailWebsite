@@ -1,0 +1,80 @@
+{% extends "recipes/base.html" %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block page_content %}
+<h1>{{ object.name }}</h1>
+<div class="split-container">
+    <div class="left-half">
+    	<div class="spaced-container">
+        	<img src="{{ object.image_url }}" class="detail-image">
+        	<div>
+                <h3>Description</h3>
+                <p>{{object.description}}</p>
+            </div>
+        </div>
+        
+    </div>
+    <div class="right-half">
+    	<div class="centered-container bordered">
+            <form method="POST" action="/recipes/like/{{ object.id }}/" hx-post='/recipes/like/{{ object.id }}/' hx-swap="outerHTML">
+                {% csrf_token %}
+                {% if like_exists %}
+                    <button type="submit" class='icon-button' id="{{ object.id }}"><i class="fas fa-thumbs-up green"></i></button>
+                {% else %} 
+                    <button type="submit" class='icon-button' id="{{ object.id }}"><i class='fas fa-thumbs-up white'></i></button>
+                {% endif %}
+            </form>
+
+            <form method="POST" action="/recipes/favourite/{{ object.id }}/" hx-post='/recipes/favourite/{{ object.id }}/' hx-swap="outerHTML">
+                {% csrf_token %}
+                {% if favourite_exists %}
+                    <button type="submit" class='icon-button' id="{{ object.id }}"><i class="fas fa-heart red"></i></button>
+                {% else %} 
+                    <button type="submit" class='icon-button' id="{{ object.id }}"><i class="fas fa-heart white"></i></button>
+                {% endif %}
+            </form>
+
+            <form method="POST" action="/recipes/made/{{ object.id }}/" hx-post='/recipes/made/{{ object.id }}/' hx-swap="outerHTML">
+                {% csrf_token %}
+                {% if made_exists %}
+                    <button type="submit" class='icon-button' id="{{ object.id }}"><i class="fas fa-martini-glass yellow"></i></button>
+                {% else %} 
+                    <button type="submit" class='icon-button' id="{{ object.id }}"><i class="fas fa-martini-glass white"></i></button>
+                {% endif %}
+            </form>
+        </div>
+        
+    </div>
+</div>
+<div class="split-container">
+	<div class="left-half vertical-stack bordered">
+        <div>
+            <h3>Directions</h3>
+            <p>{{object.directions}}</p>
+        </div>
+        <div>
+            <h3>Glass </h3>
+            <p>{{object.glass}}</p>
+        </div>
+    </div>
+    <div class="right-half">
+    	<table class="styled-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Ingredient</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in ingredients %}
+                <tr>
+                    <td>{% include 'ingredients/ingredient_card.html' %}</td>
+                    <td>{{obj.quantity}} {{obj.unit}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

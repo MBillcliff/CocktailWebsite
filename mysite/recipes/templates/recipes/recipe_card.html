@@ -1,0 +1,16 @@
+<a class="card recipe-card" href="/recipes/{{ obj.id }}/">
+    <img src="{{ obj.image_url }}" alt="Recipe Image">
+    <div class="content">
+        <h3>{{ obj.name }}</h3>
+        <p>{{ obj.num_ingredients_in_stock }} / {{ obj.num_ingredients }} <i class="fas fa-cocktail"></i></p>
+        {% if obj.liked %}
+            <i class="fas fa-thumbs-up green"></i>
+        {% endif %}
+        {% if obj.favourite %}
+            <i class="fas fa-heart red"></i>
+        {% endif %}
+        {% if obj.made %}
+            <i class="fas fa-martini-glass yellow"></i>
+        {% endif %}
+    </div>
+</a>

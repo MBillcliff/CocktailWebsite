@@ -1,0 +1,33 @@
+
+{% extends "main/base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<header class='home-header'>
+	<h1>Welcome {{user}}! What will you be making today?</h1>
+</header>
+<hr class="thick-bar shorter"><hr class="thick-bar">
+<div class="centered-container">
+	<h2>{{ seasonal_message }}</h2>
+</div>
+<hr class="thick-bar"><hr class='thick-bar shorter'>
+<section class="cards recipe-list">
+	{% for obj in seasonal_cocktails %}
+		{% include 'recipes/recipe_card.html' %}
+	{% endfor %}
+</section>
+<hr class="thick-bar shorter"><hr class="thick-bar">
+<div class="centered-container">
+	<h2>Have a favourite spirit? Check out some popular one's below</h2>
+</div>
+<hr class="thick-bar"><hr class='thick-bar shorter'>
+<section class="cards recipe-list">
+	{% for obj in popular_ingredients %}
+		{% include 'ingredients/ingredient_card.html' %}
+	{% endfor %}
+</section>
+
+{% endblock %}

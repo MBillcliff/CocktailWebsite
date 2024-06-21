@@ -1,0 +1,34 @@
+{% extends "ingredients/base.html" %}
+
+{% block title %}{{message}} Ingredients{% endblock %}
+
+
+{% block page_content %}
+<section class="cards recipe-list">
+	{% for obj in object %}
+		{% include 'ingredients/ingredient_card.html' %}
+	{% endfor %}
+</section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

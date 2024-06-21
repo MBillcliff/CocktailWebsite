@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+
+{% block title %}Followers{% endblock %}
+
+{% block content %}
+{% if heading == "Following" %}
+<h2>{{member}}'s {{heading}}</h2>
+{% else %} 
+<h2>{{member}}'s {{heading}}</h2>
+{% endif %} 
+<hr>
+    <section class='cards recipe-cards'>
+    {% if members %}
+    {% for obj in members %} 
+        {% include 'accounts/member_card.html' %}
+    {% endfor %}
+    {% else %} 
+        <h1>There are no users that fit this criteria</h1>
+    {% endif %}
+    </section>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "main/base.html" %}
+
+{% block title %}Your Profile{% endblock %}
+
+{% block content %}
+	<section class="page_content">
+		<p>Showing {{member}}'s Profile</p>
+		<p><a href="/accounts/following/{{member.id}}/">{{following|length}} following</a></p>
+		<p><a href="/accounts/followers/{{member.id}}/">{{followers|length}} followers</a></p>
+		<form method='POST' action='/accounts/follow_unfollow/{{member.id}}' hx-post='/accounts/follow_unfollow/{{ member.id }}/' hx-swap='outerHTML'>
+			{% csrf_token %}
+			{% if following_exists %}
+				<button type="submit" class='out-of-stock' id="{{ member.id }}">Unfollow</button>
+			{% else %} 
+				<button type="submit" class='in-stock' id="{{ member.id }}">Follow</button>
+			{% endif %} 
+		</form>
+		<h2>{{member}}'s Creations</h2>
+		<hr>
+		<section class="cards recipe-list">
+			{% if not member_recipes %}
+				<h3>This user has not created any cocktails.</h3>
+			{% endif %}
+			{% for recipe in member_recipes %}
+				<a class="card recipe-card" href="/recipes/{{recipe.id}}/">
+					<img src="{{recipe.image_url}}" alt="Broken image link">
+					<div class="content">
+						<h3>{{recipe.name}}</h3>
+						<p>{{recipe.num_ingredients_in_stock}} of {{recipe.num_ingredients}} Ingredients</p>
+						{% if recipe.liked %}
+							<i class="fas fa-thumbs-up green"></i>
+						{% endif %}
+						{% if recipe.favourite %}
+							<i class="fas fa-heart red"></i>
+						{% endif %}
+						{% if recipe.made %}
+							<i class="fas fa-martini-glass yellow"></i>
+						{% endif %}
+					</div>
+				</a>
+			{% endfor %}
+			<h3></h3>
+		</section>
+		<h2>{{member}}'s Favourites</h2>
+		<hr>
+		{% if not member_recipes %}
+			<h3>This user doesn't have favourite cocktails.</h3>
+		{% endif %}
+		<section class="cards recipe-list">
+		{% for recipe in member_favourites %}
+			<a class="card recipe-card" href="/recipes/{{recipe.id}}/">
+				<img src="{{recipe.image_url}}" alt="Broken image link">
+				<div class="content">
+					<h3>{{recipe.name}}</h3>
+					<p>{{recipe.num_ingredients_in_stock}} of {{recipe.num_ingredients}} <i class="fas fa-cocktail-shaker"></i></p>
+					{% if recipe.liked %}
+						<i class="fas fa-thumbs-up green"></i>
+					{% endif %}
+					{% if recipe.favourite %}
+						<i class="fas fa-heart red"></i>
+					{% endif %}
+					{% if recipe.made %}
+						<i class="fas fa-martini-glass yellow"></i>
+					{% endif %}
+				</div>
+			</a>
+		{% endfor %}
+		</section>
+		<h2>{{member}}'s Stock</h2>
+		<hr>
+		{% if not member_stock %}
+			<h3>This user doesn't have any ingredients in stock.</h3>
+		{% endif %}
+		<section class="cards recipe-list">
+			{% for ingredient in member_stock %}
+				<a href="/recipes/filter_by/{{ ingredient.id }}" class="card ingredient-card">
+					<p>{{ingredient.name}}</p>
+					<form method="POST" action="/ingredients/change_stock/{{ ingredient.id }}/" hx-post='/ingredients/change_stock/{{ ingredient.id }}/' hx-swap="outerHTML">
+						{% csrf_token %}
+						{% if ingredient in in_stock %}
+							<button type="submit" class='in-stock' id="{{ ingredient.id }}">✔️</button>
+						{% else %}
+							<button type="submit" class='out-of-stock' id="{{ ingredient.id }}">✖️</button>
+						{% endif %}
+					</form>
+				</a>
+			{% endfor %}
+		</section>
+	</section>
+	
+
+{% endblock %}

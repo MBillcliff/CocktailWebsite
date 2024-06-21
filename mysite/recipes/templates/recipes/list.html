@@ -1,0 +1,29 @@
+{% extends "recipes/base.html" %}
+
+{% block title %}
+Cocktails
+{% endblock %}
+
+{% block page_content %}
+	<div class="centered-container"> 
+	<h3 class="filter-message">{{ filter_message }}</h3>
+	{% if ingredient %}
+		{% for obj in ingredient %}
+			{% include 'ingredients/ingredient_card.html' %}
+		{% endfor %}
+	{% endif %}
+	</div>
+    <div class='centered-container' role="group" aria-label="Recipe Filters">
+        <a href="?filter_by=" class="icon-button"><i class="fas fa-globe {% if not filter_by %}blue{% endif %}"></i></a>
+        <a href="?filter_by=liked" class="icon-button btn-primary"><i class="fas fa-thumbs-up {% if filter_by == 'liked' %}green{% endif %}"></i></a>
+        <a href="?filter_by=favourite" class="icon-button btn-primary"><i class="fas fa-heart {% if filter_by == 'favourite' %}red{% endif %}"></i></a>
+        <a href="?filter_by=made" class="icon-button btn-primary"><i class="fas fa-martini-glass {% if filter_by == 'made' %}yellow{% endif %}"></i></a>
+    </div>
+
+	<section class="cards recipe-list">
+	{% for obj in object %}
+		{% include 'recipes/recipe_card.html' %}
+	{% endfor %}
+	</section>
+	<h2>{{ no_content_message }}</h2>
+{% endblock %}

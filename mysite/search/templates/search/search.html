@@ -1,0 +1,65 @@
+{% extends "search/base.html" %}
+
+{% block title %}Cocktails Home{% endblock %}
+
+{% block page_content %}
+    {% if searched %}
+        <div class='centered-container'>
+            <h2>Showing {{objects|length}} results for "{{searched}}"</h2>
+        </div>
+        <hr class="thick-bar shorter">
+        <div class="search-section">
+            <div class="cards search-results">
+                {% for obj in objects %}
+                    {% if obj in recipes %} 
+                        {% include 'recipes/recipe_card.html' %}
+                    {% elif obj in ingredients %} 
+                        {% include 'ingredients/ingredient_card.html' %}
+                    {% elif obj in members %}
+                        {% include 'accounts/member_card.html' %}
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+
+            <div class="search-filter">
+                <h2 class="filter-title">Filter By</h2>
+                <hr class="thick-bar">
+                <ul class="search-filters-list">
+                    {% if selected == "all" %}
+                    <div class="active-filter">
+                    <li><a href="/search/{{searched}}/"><h3>All</h3></a></li>
+                    </div>
+                    {% else %} 
+                    <li ><a href="/search/{{searched}}/"><h3>All</h3></a></li>
+                    {% endif %} 
+                    {% if selected == "recipes" %}
+                    <div class="active-filter">
+                    <li><a href="/search/recipes/{{searched}}/"><h3>Recipes</h3></a></li>
+                    </div>
+                    {% else %} 
+                    <li><a href="/search/recipes/{{searched}}/"><h3>Recipes</h3></a></li>
+                    {% endif %} 
+                    {% if selected == "ingredients" %}
+                    <div class="active-filter">
+                    <li><a href="/search/ingredients/{{searched}}/"><h3>Ingredients</h3></a></li>
+                    </div>
+                    {% else %} 
+                    <li><a href="/search/ingredients/{{searched}}/"><h3>Ingredients</h3></a></li>
+                    {% endif %} 
+                    {% if selected == "members" %}
+                    <div class="active-filter">
+                    <li><a href="/search/members/{{searched}}/"><h3>Members</h3></a></li>
+                    </div>
+                    {% else %} 
+                    <li><a href="/search/members/{{searched}}/"><h3>Members</h3></a></li>
+                    {% endif %} 
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        <h1>You forgot to search!</h1>
+    {% endif %}
+{% endblock %}
+
+

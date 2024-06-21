@@ -1,0 +1,470 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Silkscreen&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, sans-serif;
+    color: rgb(245, 238, 238)
+}
+
+p {
+    margin: 10px;
+    padding: 5px;
+}
+
+.filter-title {
+    margin: 10px;
+}
+
+body {
+    background-color:#234;
+    margin-bottom: 100px;
+}
+
+.sticky {
+    position: sticky;
+    z-index: 100;
+  }
+
+.site-header {
+    background-color:rgb(21, 41, 46);
+    top: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.right-header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.search-bar{
+    height: 20px;
+    font-size: 15px;
+    border-radius: 6px 0 0 6px; 
+    padding-left: 5px;
+    color: black;
+    margin: 0;
+    border: 0;
+}
+
+.search-button {
+    margin-right: 20px;
+    background-color: #f8f8f8;
+    color: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 0 6px 6px 0;
+}
+
+button:not(.search-button) {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+input {
+    color: black;
+}
+
+.nav__links {
+    list-style: none;
+    margin-right: 10px;
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 5px;
+}
+
+.login-btn {
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+.body > button {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.login-form input {
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.header-content{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-header{
+    margin: 0 auto;
+    width:  75vw;
+}
+
+.home-header h1{
+    color: #AAAAAA;
+    font-size:  30px;
+    margin: 0 auto;
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.mask {
+    background-color: #234;
+    padding: 5px;
+    position: sticky;
+    top: 93px;
+    z-index: 100;
+    margin: 0;
+}
+
+.section-header {
+    background-color: rgb(21, 41, 46);
+    border-radius: 10px;
+    position: sticky;
+    top: 103px;
+    z-index: 100;
+    margin-bottom: 10px;
+}
+
+.section-header section {
+    margin: 10px auto;
+    width: 75vw;
+    display: flex;
+    padding: 10px;
+    justify-content: space-evenly;  
+}
+
+.section-navigation a {
+    padding: 10px;
+    margin: 10px;
+}
+
+.content-wrap section{
+    margin: 0 auto;
+    width: 75vw;
+    align-items: center;
+}
+
+.content-wrap h1 {
+    text-align: center;
+    font-size:  30px;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.2s ease 0s;
+}
+
+.logo big{
+    font-family: Silkscreen, sans-serif;
+    font-size: 30px;
+    padding:0;
+    margin:0;
+}
+
+.thick-bar {
+    height: 4px;
+    background-color: white;
+    border-radius:  5px;
+    border: 0;
+    margin: 10px auto;
+}
+
+.shorter {
+    width:  85%;
+}
+
+button {
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    opacity: 80%;
+}
+
+a:hover {
+    color:rgba(0, 136, 169, 1);
+}
+
+.container a:hover {
+    opacity: 60%;
+}
+
+form label {
+    font-size: 16px;
+}
+
+.ing-form select option {
+    background-color: rgb(21, 41, 46);
+}
+
+form > * {
+    margin: 10px 10px 10px 0;
+}
+
+.ing-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ing-form > * {
+    margin-right: 5px;
+}
+
+.ing-form button {
+    margin: auto 0 0 0;
+    font-size: 1rem
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+
+/* For screens between 601px and 900px wide, show 2 columns */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+.recipe-cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+
+/* For screens wider than 900px, show 3 columns (default) */
+@media screen and (min-width: 901px) {
+.recipe-cards {
+    grid-template-columns: repeat(3, 1fr);
+}
+}
+
+/* For screens between 601px and 900px wide, show 2 columns */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .ingredient-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    }
+    
+    /* For screens wider than 900px, show 3 columns (default) */
+    @media screen and (min-width: 901px) {
+    .ingredient-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    }
+
+.search-cards{
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.cards a {
+    padding:  0;
+    margin:  10px auto;
+}
+
+.cards div {
+    margin: 10px auto;
+}
+
+.spaced-container {
+    display:  flex;
+    justify-content: space-between;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vertical-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+}
+
+.card {
+    background: #222;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    padding-right: 10px;
+}
+
+.recipe-card {
+    width:  340px;
+    height:  150px;
+}
+
+.ingredient-card {
+    width: 300px;
+    height: 50px;
+    justify-content: space-between;
+}
+
+.ingredient-card p{
+    margin: auto 10px;
+}
+
+.card img {
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 15px 0 0 15px ;
+}
+
+.card .content {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.card a {
+    color: white;
+    margin: 5px;
+    padding: 10px;
+    border-radius:  10px;
+}
+
+.card:hover {
+    transform:  scale(1.02);
+    z-index: 50;
+}
+
+
+.in-stock {
+    background-color: rgb(36, 175, 36);
+}
+
+.out-of-stock {
+    background-color: rgb(201, 55, 55);
+}
+
+.warning {
+    background: red;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin-right: 20px;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px #0008;
+    border-bottom: 3px solid #656585;
+}
+
+.styled-table thead tr{
+    background-color: #656585;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #EEE;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #203048;
+}
+
+fieldset {
+    border: none;
+}
+
+.detail-form input {
+    width: 80%;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 6px; 
+    padding-left: 10px;
+    color: black;
+}
+
+.detail-form button {
+    border-radius: 6px;
+    padding: 5px 20px;
+    margin-right: 10px;
+}
+
+.detail-image {
+    width: 20%;
+    border-radius: 5%;
+    justify-self: center;
+}
+
+.search-section {
+    display: flex
+}
+
+
+.search-results .card {
+    margin: 10px;
+}
+
+.search-results {
+    flex: 1;
+}
+
+.search-filter {
+    padding: 10px;
+    width: 33%;
+}
+
+.active-filter {
+    background-color: rgb(21, 41, 46);
+    border-radius: 5px;
+}
+
+.search-filters-list {
+    list-style: none;
+    margin: 10px;
+  }
+
+.search-filters-list li {
+    padding: 5px;
+    margin: 2px;
+}
+
+.member-card{
+    display: flex;
+    justify-content: left;
+    margin: 20px;
+}
+
+.member-image {
+    border-radius: 100%;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px; 
+    object-fit: cover; 
+}
+
+.member-card-info {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 5px;
+}
+
+.followers-following {
+    display: flex;
+    justify-content: left;
+}
+
+.member-follow {
+    color: rgb(200, 200, 200);
+    margin-right: 5px;
+}

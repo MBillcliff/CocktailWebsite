@@ -1,0 +1,28 @@
+{% extends "main/base.html" %} 
+
+{% block title %}
+You didn't add a title
+{% endblock %} 
+
+{% block content %}
+    <section>
+        <hr class='thick-bar shorter'><hr class="thick-bar">
+        <a href="/recipes/"><h1>Cocktails</h1></a>
+        <hr class="thick-bar"><hr class='thick-bar shorter'>
+    </section>
+    <header class="section-header">
+        <section>
+            <nav class="section-navigation">
+                <a href="/recipes/all/">All Cocktails</a>
+                <a href="/recipes/created/">Your Creations</a>
+                <a href="/recipes/can_make/">What Can You Make?</a>
+                <a href="/recipes/create/">Create New Cocktail</a>
+            </nav>
+        </section>
+    </header>  
+    
+    <section class="page-content">
+        {% block page_content %}
+        {% endblock %}
+    </section>
+{% endblock %} 

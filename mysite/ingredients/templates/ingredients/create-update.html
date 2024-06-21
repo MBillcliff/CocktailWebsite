@@ -1,0 +1,18 @@
+{% extends "ingredients/base.html" %}
+
+{% block title %}{{message}} Ingredient{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<h2>{{message}} Your Ingredient</h2>
+	<hr>
+	<h3>Ingredient Details</h3>
+	<hr>
+	<form action='.', method="POST">
+		{% csrf_token %}
+		{{ form|crispy }}
+		<button type="submit", class="btn btn-info">Save</button>
+	</form>
+
+{% endblock %}

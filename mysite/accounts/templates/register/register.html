@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+
+{% block title%}Create an Account{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<section>
+		<form method="POST">
+			{% csrf_token %}
+			<div class="form-row">
+				{{form.username|as_crispy_field}}
+			</div>
+			<div>
+				{{form.email|as_crispy_field}}
+			</div>
+			<div class="form-row">
+				{{form.first_name|as_crispy_field}}
+				{{form.last_name|as_crispy_field}}
+			</div>
+			<div class="form-row">
+				{{form.password1|as_crispy_field}}
+				{{form.password2|as_crispy_field}}
+			</div>
+			<button type="submit" class="btn btn-primary">Register</button>
+		</form>
+	</section>
+	<p>Already have an account? Log in <a href="/accounts/login/" class="redirect">here</a>.</p>
+{% endblock %}

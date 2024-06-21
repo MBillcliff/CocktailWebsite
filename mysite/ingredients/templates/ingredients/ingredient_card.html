@@ -1,0 +1,11 @@
+<a href="/recipes/filter_by/{{ obj.id }}" class="card ingredient-card">
+    <p>{{obj.name}}</p>
+    <form method="POST" action="/ingredients/change_stock/{{ obj.id }}/" hx-post='/ingredients/change_stock/{{ obj.id }}/' hx-swap="outerHTML">
+        {% csrf_token %}
+        {% if obj in in_stock %}
+            <button type="submit" class='in-stock' id="{{ obj.id }}">✔️</button>
+        {% else %}
+            <button type="submit" class='out-of-stock' id="{{ obj.id }}">✖️</button>
+        {% endif %}
+    </form>
+</a>

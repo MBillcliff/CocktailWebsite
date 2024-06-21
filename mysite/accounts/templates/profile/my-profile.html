@@ -1,0 +1,13 @@
+{% extends "main/base.html" %}
+
+{% block title %}Your Profile{% endblock %}
+
+{% block content %}
+	<section class="container">
+		<p>Logged in as {{user}}. <a href="/logout/">Logout</a></p>
+		<p><a href="/accounts/following/{{user.id}}">{{following|length}} following</a></p>
+		<p><a href="/accounts/followers/{{user.id}}">{{followers|length}} followers</a></p>
+	</section>
+	
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "main/base.html" %} 
+
+{% block title %}
+{% endblock %} 
+
+{% block content %}
+    <section>
+        <hr class='thick-bar shorter'><hr class="thick-bar">
+        <a href="/ingredients/"><h1>Ingredients</h1></a>
+        <hr class="thick-bar"><hr class='thick-bar shorter'>
+    </section>
+    <header class="section-header">
+        <section>
+            <nav class="section-navigation">
+                <a href="/ingredients/all/">All Ingredients</a>
+                <a href="/ingredients/stock/">Your Stock</a>
+                <a href="/recipes/can_make/">What Can You Make?</a>
+                <a>Suggested Ingredients</a>
+                <!-- <a href="/ingredients/created/">Created Ingredients</a>
+                <a href="/ingredients/create/">Create New Ingredient</a> -->
+            </nav>
+        </section>
+    </header>   
+    
+    <section>
+        {% block page_content %}
+        {% endblock %}
+    </section>
+{% endblock %} 

@@ -1,0 +1,21 @@
+{% extends "ingredients/base.html" %}
+
+{% block title %}{{object.name}}{% endblock %}
+
+{% block content %}
+<h1>{{ object.name }}</h1>
+<div>
+	<h3>Description</h3>
+	<p>{{object.description}}</p>
+</div>
+<div>
+	<h3>In Stock?</h3>
+	<p>{{object.in_stock}}</p>
+</div>
+<div>
+	<img src="{{object.image_url}}" alt="No image found">
+</div>
+
+
+<a class="btn btn-outline-info" href='edit/'>Edit Ingredient</a>
+{% endblock %}
